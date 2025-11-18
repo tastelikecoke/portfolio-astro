@@ -1,0 +1,42 @@
+---
+import { Content  as AboutMe } from '../contents/aboutme.md';
+import 'purecss/build/pure-min.css';
+const menu = ["list", "contained"]
+
+const games = Object.values(import.meta.glob('../contents/games/*.md', { eager: true }));
+
+const sortedGames = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<div id="menu">
+			<div class="pure-menu">
+				<ul class="pure-menu-list">
+					{menu.map(item =>
+						<li class="pure-menu-item">
+							<a class="pure-menu-link">{item}</a>
+						</li>
+					)}
+				</ul>
+			</div>
+		</div>
+		<div class="main"></div>
+			<AboutMe />
+			<div>
+				<h2>Game Projects</h2>
+				{sortedGames.map(game =>
+					<h3>{game.frontmatter.title}</h3>
+					<Fragment set:html={game.compiledContent()}/>
+				)}
+			</div>
+		</div>
+	</body>
+</html>
