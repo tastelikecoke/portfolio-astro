@@ -1,11 +1,16 @@
 ---
 import { Content  as AboutMe } from '../contents/aboutme.md';
+import '../styles/global.css';
 import 'purecss/build/pure-min.css';
-const menu = ["list", "contained"]
+const menu = [
+	"a", "b"
+]
 
-const games = Object.values(import.meta.glob('../contents/games/*.md', { eager: true }));
+var games = Object.values(import.meta.glob('../contents/games/*.md', { eager: true }));
+var personalgames = Object.values(import.meta.glob('../contents/personalgames/*.md', { eager: true }));
 
-const sortedGames = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
+games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
+personalgames = personalgames.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
 ---
 
 <html lang="en">
@@ -14,29 +19,50 @@ const sortedGames = games.sort((a, b) => b.frontmatter.order - a.frontmatter.ord
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="generator" content={Astro.generator} />
+    	<link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
 		<title>Astro</title>
 	</head>
 	<body>
-		<div id="menu">
-			<div class="pure-menu">
-				<ul class="pure-menu-list">
-					{menu.map(item =>
-						<li class="pure-menu-item">
-							<a class="pure-menu-link">{item}</a>
-						</li>
-					)}
-				</ul>
+		<div id="layout">
+			<!-- Menu toggle -->
+			<a href="#menu" id="menuLink" class="menu-link">
+				<!-- Hamburger icon -->
+				<span></span>
+			</a>
+			<div id="menu">
+				<div class="pure-menu">
+					<ul class="pure-menu-list">
+						{menu.map(item =>
+							<li class="pure-menu-item">
+								<a class="pure-menu-link">{item}</a>
+							</li>
+						)}
+					</ul>
+				</div>
 			</div>
-		</div>
-		<div class="main"></div>
-			<AboutMe />
-			<div>
-				<h2>Game Projects</h2>
-				{sortedGames.map(game =>
-					<h3>{game.frontmatter.title}</h3>
-					<Fragment set:html={game.compiledContent()}/>
-				)}
+			<div id="main">
+
+				<div class="content">
+					<AboutMe />
+				</div>
+					
+				<div class="content">
+					<h1>Game Projects</h1>
+					{games.map(game =>
+						<h2>{game.frontmatter.title}</h2>
+						<Fragment set:html={game.compiledContent()}/>
+					)}
+					<h1>Personal Game Projects</h1>
+					{personalgames.map(game =>
+						<h2>{game.frontmatter.title}</h2>
+						<Fragment set:html={game.compiledContent()}/>
+					)}
+				</div>
 			</div>
 		</div>
 	</body>
+
+	<script>
+		import '../js/ui.js';
+	</script>
 </html>
