@@ -1,5 +1,4 @@
 (function (window, document) {
-
     // we fetch the elements each time because docusaurus removes the previous
     // element references on page navigation
     function getElements() {
@@ -51,4 +50,4 @@
     
     document.addEventListener('click', handleEvent);
 
-}(this, this.document));
+}(this, this?.document));
