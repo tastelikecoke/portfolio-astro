@@ -2,9 +2,17 @@
 import { Content  as AboutMe } from '../contents/aboutme.md';
 import '../styles/global.css';
 import 'purecss/build/pure-min.css';
+
 const menu = [
-	["aboutme", "About Me"],
-	["professional", "Professional"]
+	["portfolio", "Portfolio", [
+			["aboutme", "About Me"],
+		]
+	],
+	["games", "Games", [
+			["aboutme", "About Me"],
+			["professional", "Professional"],
+		]
+	],
 ]
 var games = Object.values(import.meta.glob('../contents/games/*.md', { eager: true }));
 var personalgames = Object.values(import.meta.glob('../contents/personalgames/*.md', { eager: true }));
@@ -31,17 +39,23 @@ personalgames = personalgames.sort((a, b) => b.frontmatter.order - a.frontmatter
 			</a>
 			<div id="menu">
 				<div class="pure-menu">
-					<ul class="pure-menu-list">
-						{menu.map(item =>
-							<li class="pure-menu-item">
-								<a class="pure-menu-link" href={"#"+item[0]}>{item[1]}</a>
-							</li>
-						)}
-					</ul>
+				{menu.map(item =>
+						<a class="pure-menu-heading" href={"#"+item[0]}>{item[1]}</a>
+						<ul class="pure-menu-list">
+							{item[2].map(subitem =>
+								<li class="pure-item">
+									<a class="pure-menu-link" href={"#"+subitem[0]}>{subitem[1]}</a>
+								</li>
+							)
+							}
+						</ul>
+				)}
 				</div>
 			</div>
 			<div id="main">
-
+				<div class="header">
+					<h1>Jeru Mercado</h1>
+				</div>
 				<div class="content">
 					<a name="aboutme"></a>
 					<h1>About Me</h1>
