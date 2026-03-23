@@ -1,8 +1,10 @@
 ---
 import * as aboutMe from '../contents/aboutme.md';
+import '../styles/new.css' 
 
 var games = Object.values(import.meta.glob('../contents/games/*.md', { eager: true }));
 games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
+
 ---
 
 <html lang="en">
@@ -14,10 +16,10 @@ games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
       <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'></link>
     <title>Astro</title>
   </head>
-  <body>
-    <section class="aboutme">
-      <header>{aboutMe.frontmatter.introduction}</header>
-      <article>
+  <body class="bg-black text-white font-base">
+    <section class="aboutme center">
+      <header class="text-6xl font-title">{aboutMe.frontmatter.introduction}</header>
+      <article class="">
         <aboutMe.Content />
       </article>
     </section>
