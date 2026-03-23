@@ -1,4 +1,5 @@
 ---
 title: 'About Me'
+introduction: "Hi, I'm Jeru Mercado."
 ---
-Hello! My name is __Jeru Mercado__ and I am a software engineer based in the Philippines. I graduated with a degree in Computer Science from the University of the Philippines. 
+Software engineer based in the Philippines. Graduated with a degree in Computer Science from the University of the Philippines. 
