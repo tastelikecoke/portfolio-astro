@@ -1,5 +1,7 @@
 ---
 title: 'Altitude Games (Published by Pikpok): Kung Fu Clicker'
+publisher: 'Pikpok'
+gametitle: 'Kung Fu Clicker'
 order: 2019
 ---
 I worked as a Game Engineer for Kung Fu Clicker, A game developed by Altitude Games and published by Pikpok. I was responsible for UI features, bug fixing, limited time events implementation and server support for the game. 

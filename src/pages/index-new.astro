@@ -13,40 +13,45 @@ games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-      <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'></link>
-    <title>Astro</title>
+    <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'></link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">    <title>Astro</title>
   </head>
   <body class="bg-black text-white font-base">
-    <section class="aboutme center">
-      <header class="text-6xl font-title">{aboutMe.frontmatter.introduction}</header>
-      <article class="">
+    <section class="aboutme center w-2/3 m-auto p-[72px]">
+      <header class="text-5xl font-title p-[20px] uppercase">{aboutMe.frontmatter.introduction}</header>
+      <article class="text-2xl">
         <aboutMe.Content />
       </article>
     </section>
-    <section class="games">
-      <header>Professional Game Projects</header>
-      <section>
-        <div>
-					{games.map(game =>
-            <header>{game.frontmatter.title}</header>
-            <article>
+    <section class="w-3/4 m-auto">
+      <header class="text-2xl px-[20px]">Professional Game Projects</header>
+      <section class="grid grid-cols-2">
+        {games.map(game =>
+          <div class="p-[20px]">
+            <header class="text-xl font-bold">{game.frontmatter.gametitle}</header>
+            <div class="h-[160px] bg-gray-900">
+              <img />
+            </div>
+            <article class="text-sm py-[20px]">
               <game.Content />
             </article>
-          )}
-        </div>
+          </div>
+        )}
       </section>
     </section>
-    <section class="web">
-      <header>Web Development</header>
-      <section>
-        <div>
-					{games.map(game =>
-            <header>{game.frontmatter.title}</header>
+    <section class="w-3/4 m-auto pt-[48px]">
+      <header class="text-2xl">Web Development</header>
+      <section class="grid grid-cols-2">
+        {games.map(game =>
+          <div class="p-[20px]">
+            <header class="text-xl">{game.frontmatter.title}</header>
             <article>
               <game.Content />
             </article>
-          )}
-        </div>
+          </div>
+        )}
       </section>
     </section>
   </body>

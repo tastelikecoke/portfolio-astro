@@ -1,5 +1,6 @@
 ---
 title: 'Altitude Games: Dream Defense'
+gametitle: 'Dream Defense'
 order: 2016
 ---
 I worked as Junior Game Engineer for Dream Defense. I was responsible for the player skinning system, cloud save implementation, and rewards flow of the game. 
