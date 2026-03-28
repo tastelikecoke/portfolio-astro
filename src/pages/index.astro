@@ -1,138 +1,74 @@
 ---
-import { Content  as AboutMe } from '../contents/aboutme.md';
-import '../styles/global.css';
-import 'purecss/build/pure-min.css';
+import * as aboutMe from '../contents/aboutme.md';
+import '../styles/new.css' 
 
-const menu = [
-	["portfolio", "Portfolio", [
-			["aboutme", "About Me"],
-		]
-	],
-	["games", "Games", [
-			["aboutme", "About Me"],
-			["professional", "Professional"],
-		]
-	],
-]
 var games = Object.values(import.meta.glob('../contents/games/*.md', { eager: true }));
-var personalgames = Object.values(import.meta.glob('../contents/personalgames/*.md', { eager: true }));
-
 games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
-personalgames = personalgames.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
+
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="generator" content={Astro.generator} />
-    	<link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
-		<title>Astro</title>
-	</head>
-	<body>
-		<div id="layout">
-			<!-- Menu toggle -->
-			<a href="#menu" id="menuLink" class="menu-link">
-				<!-- Hamburger icon -->
-				<span></span>
-			</a>
-			<div id="menu">
-				<div class="pure-menu">
-				{menu.map(item =>
-						<a class="pure-menu-heading" href={"#"+item[0]}>{item[1]}</a>
-						<ul class="pure-menu-list">
-							{item[2].map(subitem =>
-								<li class="pure-item">
-									<a class="pure-menu-link" href={"#"+subitem[0]}>{subitem[1]}</a>
-								</li>
-							)
-							}
-						</ul>
-				)}
-				</div>
-			</div>
-			<div id="main">
-				<div class="header">
-					<h1>Jeru Mercado</h1>
-				</div>
-				<div class="content">
-					<a name="aboutme"></a>
-					<h1>About Me</h1>
-					<AboutMe />
-				</div>
-					
-				<div class="content">
-					<a name="professional"></a>
-					<h1>Game Projects</h1>
-					{games.map(game =>
-						<h2>{game.frontmatter.title}</h2>
-						<Fragment set:html={game.compiledContent()}/>
-					)}
-					<h1>Personal Game Projects</h1>
-					{personalgames.map(game =>
-						<h2>{game.frontmatter.title}</h2>
-						<Fragment set:html={game.compiledContent()}/>
-					)}
-				</div>
-			</div>
-		</div>
-	</body>
-
-	<script is:inline>
-		(function (window, document) {
-			// we fetch the elements each time because docusaurus removes the previous
-			// element references on page navigation
-			function getElements() {
-				return {
-					layout: document.getElementById('layout'),
-					menu: document.getElementById('menu'),
-					menuLink: document.getElementById('menuLink')
-				};
-			}
-
-			function toggleClass(element, className) {
-				var classes = element.className.split(/\s+/);
-				var length = classes.length;
-				var i = 0;
-
-				for (; i < length; i++) {
-					if (classes[i] === className) {
-						classes.splice(i, 1);
-						break;
-					}
-				}
-				// The className is not found
-				if (length === classes.length) {
-					classes.push(className);
-				}
-
-				element.className = classes.join(' ');
-			}
-
-			function toggleAll() {
-				var active = 'active';
-				var elements = getElements();
-
-				toggleClass(elements.layout, active);
-				toggleClass(elements.menu, active);
-				toggleClass(elements.menuLink, active);
-			}
-			
-			function handleEvent(e) {
-				var elements = getElements();
-				
-				if (e.target.id === elements.menuLink.id) {
-					toggleAll();
-					e.preventDefault();
-				} else if (elements.menu.className.indexOf('active') !== -1) {
-					toggleAll();
-				}
-			}
-			
-			document.addEventListener('click', handleEvent);
-
-		}(this, this?.document));
-	</script>
-
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'></link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">    <title>Astro</title>
+  </head>
+  <body class="bg-gray-950 text-white font-base">
+    <nav class="text-xl flex-row-reverse w-3/5 flex m-auto p-[20px]">
+      <a href="#" class="px-[10px]">Contact</a>
+      <a href="#" class="px-[10px]">Portfolio</a>
+    </nav>
+    <section class="min-w-[400px] w-3/5 m-auto p-[72px]">
+      <header class="text-5xl font-title py-[20px] uppercase">{aboutMe.frontmatter.introduction}</header>
+      <article class="text-2xl">
+        <aboutMe.Content />
+      </article>
+    </section>
+    <section class="min-w-[300px] w-3/5 m-auto">
+      <header class="text-3xl px-[20px] flex">
+        <span>Professional Game Projects</span>
+        <hr class="inline flex-grow my-[20px] mx-[20px]" />
+      </header>
+      <section class="grid grid-cols-1 lg:grid-cols-2">
+        {games.map(game =>
+          <div class="p-[30px] hover:bg-gray-900 mx-[20px]">
+            <header class="text-xl">{game.frontmatter.gametitle}</header>
+            <div class="h-[160px] bg-gray-800">
+              <img />
+            </div>
+            <article class="game-content text-sm py-[20px] text-gray-400">
+              <game.Content />
+            </article>
+            <footer class="pt-[24px]">
+              {Object.entries(game.frontmatter.links).map(entry =>
+                <a class="inline-block m-[5px] p-[15px] bg-gray-800" href={entry[1]}>{entry[0]}</a>
+              )}
+            </footer>
+          </div>
+        )}
+      </section>
+    </section>
+    <section class="w-3/5 m-auto pt-[48px]">
+      <header class="text-3xl px-[20px] flex">
+        <span>Web Development</span>
+        <hr class="inline flex-grow my-[20px] mx-[20px]" />
+      </header>
+      <section class="grid grid-cols-2">
+        {games.map(game =>
+          <div class="p-[20px]">
+            <header class="text-xl">
+            </header>
+            <article>
+              <game.Content />
+            </article>
+          </div>
+        )}
+      </section>
+    </section>
+  </body>
 </html>
