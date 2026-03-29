@@ -4,3 +4,8 @@
   --font-title: "Source Serif 4", serif;
   --font-base: sans-serif;
 }
+
+.game:hover .gametitle {
+  color: oklch(78.9% 0.154 211.53);
+  font-weight: bold;
+}
