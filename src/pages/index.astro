@@ -1,11 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
 import * as aboutMe from '../contents/aboutme.md';
 import '../styles/new.css' 
+import { render } from 'astro:content';
+import { Image, Picture } from 'astro:assets';
 
-
-
-var games = Object.values(import.meta.glob('../contents/games/*.md', { eager: true }));
-games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
+var games = await getCollection("games");
+games = games.sort((a, b) => b.data.order - a.data.order);
 ---
 
 <html lang="en">
@@ -37,20 +38,28 @@ games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
           <hr class="inline flex-grow my-[20px] mx-[20px]" />
         </header>
         <section class="grid grid-cols-1 lg:grid-cols-2">
-          {games.map(game =>
+          {games.map(async(game) => {
+            const { Content } = await render(game)
+            return (
             <div class="game p-[30px] hover:bg-zinc-900 mx-[20px]">
-              <header class="gametitle text-xl">{game.frontmatter.gametitle}</header>
-              <div class="h-[160px] bg-gray-800">
+              <header class="gametitle text-xl">{game.data.gametitle}</header>
+              <div class="h-[160px] flex gap-[4px]">
+                {game.data.images.map(image =>
+                  <div class="w-[50%]">
+                    <Picture src={image} formats={['webp']} alt={game.data.title} class="w-[100%] max-h-[160px] object-cover" />
+                  </div>
+                )}
               </div>
               <article class="game-content text-sm py-[20px] text-zinc-400">
-                <game.Content />
+                <Content />
               </article>
               <footer class="pt-[24px]">
-                {Object.entries(game.frontmatter.links).map(entry =>
+                {Object.entries(game.data.links).map(entry =>
                   <a class="inline-block m-[5px] p-[15px] bg-gray-800" href={entry[1]}>{entry[0]}</a>
                 )}
               </footer>
             </div>
+            )}
           )}
         </section>
       </section>
@@ -65,7 +74,7 @@ games = games.sort((a, b) => b.frontmatter.order - a.frontmatter.order);
               <header class="text-xl">
               </header>
               <article>
-                <game.Content />
+                {game.rendered}
               </article>
             </div>
           )}
