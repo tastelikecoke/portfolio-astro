@@ -9,6 +9,7 @@ var games = await getCollection("games");
 games = games.sort((a, b) => b.data.order - a.data.order);
 var webs = await getCollection("webs");
 var personals = await getCollection("personals");
+webs = webs.sort((a, b) => b.data.order - a.data.order);
 ---
 
 <html lang="en">
@@ -27,6 +28,10 @@ var personals = await getCollection("personals");
       <nav class="text-xl w-[100%] flex flex-row-reverse p-[40px]">
         <a href="#" class="px-[10px] hover:text-cyan-400">
           Contact
+          <div class="rounded-[4px] w-[1px] m-auto"></div>
+        </a>
+        <a href="#" class="px-[10px] hover:text-cyan-400">
+          Skills
           <div class="rounded-[4px] w-[1px] m-auto"></div>
         </a>
         <a href="#" class="px-[10px] hover:text-cyan-400">
@@ -56,14 +61,14 @@ var personals = await getCollection("personals");
                 <span>{game.data.gametitle}</span>
                 <span class="text-base"> {'('}{game.data.order}{')'}</span>
               </header>
-              <figure class="h-[160px] items-center flex gap-[4px] bg-gray-900">
+              <figure class="h-[200px] items-center flex gap-[4px] bg-gray-900">
                 {game.data.images.map(image =>
                   <div class="grow-1">
                     <Picture
                       src={image}
                       formats={['webp']}
                       alt={game.data.title}
-                      class="w-[100%] max-h-[160px] object-cover" />
+                      class="w-[100%] max-h-[200px] object-cover" />
                   </div>
                 )}
               </figure>
@@ -132,9 +137,9 @@ var personals = await getCollection("personals");
                     </div>
                   )}
                 </figure>
-                <p class="entry-content text-sm py-[20px] text-zinc-400">
+                <div class="text-sm py-[20px] text-zinc-300 font-light">
                   <Content />
-                </p>
+                </div>
                 <footer class="pt-[24px] text-sm">
                   {Object.entries(personal.data.links).map(entry =>
                     <a class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
