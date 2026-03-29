@@ -7,6 +7,7 @@ import { Image, Picture } from 'astro:assets';
 
 var games = await getCollection("games");
 games = games.sort((a, b) => b.data.order - a.data.order);
+var webs = await getCollection("webs");
 ---
 
 <html lang="en">
@@ -15,6 +16,7 @@ games = games.sort((a, b) => b.data.order - a.data.order);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+		<title>Portfolio</title>
     <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'></link>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,11 +24,11 @@ games = games.sort((a, b) => b.data.order - a.data.order);
   </head>
   <body class="bg-zinc-950 text-white font-base">
     <main class="min-w-[400px] w-3/5 lg:w-[900px] m-auto sticky">
-      <nav class="text-xl w-[100%] flex flex-row-reverse p-[20px]">
+      <nav class="text-xl w-[100%] flex flex-row-reverse p-[40px]">
         <a href="#" class="px-[10px]">Contact</a>
         <a href="#" class="px-[10px]">Portfolio</a>
       </nav>
-      <section class="min-w-[300px] p-[72px]">
+      <section class="min-w-[300px] p-[48px]">
         <header class="text-5xl font-title py-[20px] uppercase">{aboutMe.frontmatter.introduction}</header>
         <article class="text-2xl">
           <aboutMe.Content />
@@ -37,13 +39,16 @@ games = games.sort((a, b) => b.data.order - a.data.order);
           <span>Professional Game Projects</span>
           <hr class="inline flex-grow my-[20px] mx-[20px]" />
         </header>
-        <section class="grid grid-cols-1 lg:grid-cols-2">
+        <article class="grid grid-cols-1 lg:grid-cols-2">
           {games.map(async(game) => {
             const { Content } = await render(game)
             return (
-            <div class="game p-[30px] hover:bg-zinc-900 mx-[20px]">
-              <header class="gametitle text-xl">{game.data.gametitle}</header>
-              <div class="h-[160px] items-center flex gap-[4px] bg-gray-900">
+            <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
+              <header class="entrytitle text-xl pb-[12px]">
+                <span>{game.data.gametitle}</span>
+                <span> {'('}{game.data.order}{')'}</span>
+              </header>
+              <figure class="h-[160px] items-center flex gap-[4px] bg-gray-900">
                 {game.data.images.map(image =>
                   <div class="grow-1">
                     <Picture
@@ -53,36 +58,71 @@ games = games.sort((a, b) => b.data.order - a.data.order);
                       class="w-[100%] max-h-[160px] object-cover" />
                   </div>
                 )}
-              </div>
-              <article class="game-content text-sm py-[20px] text-zinc-400">
+              </figure>
+              <p class="text-sm py-[20px] text-zinc-400">
                 <Content />
-              </article>
+              </p>
               <footer class="pt-[24px] text-sm">
                 {Object.entries(game.data.links).map(entry =>
-                  <a class="gamelinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
+                  <a class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
                 )}
               </footer>
             </div>
             )}
           )}
-        </section>
+        </article>
       </section>
       <section class="pt-[48px]">
         <header class="text-3xl px-[20px] flex">
           <span>Web Development</span>
           <hr class="inline flex-grow my-[20px] mx-[20px]" />
         </header>
-        <section class="grid grid-cols-2">
-          {games.map(game =>
-            <div class="p-[20px]">
-              <header class="text-xl">
-              </header>
-              <article>
-                {game.rendered}
-              </article>
-            </div>
+        <article class="grid grid-cols-1 lg:grid-cols-2">
+          {webs.map(async(web) => {
+            const { Content } = await render(web);
+            return (
+              <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
+                <header class="text-xl">
+                  {web.data.title}
+                </header>
+                <div class="text-sm py-[10px]">
+                  {web.data.keywords.map(keyword =>
+                    <span class="bg-zinc-800 text-zinc-400 p-[8px] rounded-[5px] mx-[4px]">{keyword}</span>
+                  )}
+                </div>
+                <p class="entry-content text-sm py-[20px] text-zinc-400">
+                  <Content />
+                </p>
+              </div>
+            )}
           )}
-        </section>
+        </article>
+      </section>
+      <section class="pt-[48px]">
+        <header class="text-3xl px-[20px] flex">
+          <span>Personal Projects</span>
+          <hr class="inline flex-grow my-[20px] mx-[20px]" />
+        </header>
+        <article class="grid grid-cols-1 lg:grid-cols-2">
+          {webs.map(async(web) => {
+            const { Content } = await render(web);
+            return (
+              <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
+                <header class="text-xl">
+                  {web.data.title}
+                </header>
+                <div class="text-sm py-[10px]">
+                  {web.data.keywords.map(keyword =>
+                    <span class="bg-zinc-800 text-zinc-400 p-[8px] rounded-[5px] mx-[4px]">{keyword}</span>
+                  )}
+                </div>
+                <p class="entry-content text-sm py-[20px] text-zinc-400">
+                  <Content />
+                </p>
+              </div>
+            )}
+          )}
+        </article>
       </section>
     </main>
   </body>

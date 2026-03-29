@@ -5,13 +5,15 @@
   --font-base: sans-serif;
 }
 
-.game:hover .gametitle {
+.entry:hover .entrytitle {
   color: var(--color-cyan-400);
   font-weight: bold;
+  transform:translateX(-3px);
+
 }
-.game:hover article {
+.entry:hover article {
   color: white;
 }
-.game:hover .gamelinks {
+.entry:hover .entrylinks {
   background-color: var(--color-gray-700);
 }
