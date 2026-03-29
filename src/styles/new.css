@@ -9,11 +9,23 @@
   color: var(--color-cyan-400);
   font-weight: bold;
   transform:translateX(-3px);
-
 }
 .entry:hover article {
   color: white;
 }
 .entry:hover .entrylinks {
   background-color: var(--color-gray-700);
+}
+.entry:hover figure {
+  background-color: var(--color-gray-800);
+}
+
+nav a div{
+  border: 2px solid transparent;
+}
+nav a div.current{
+  border: 2px solid white;
+}
+nav a:hover div{
+  border: 2px solid var(--color-cyan-400);
 }

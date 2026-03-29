@@ -20,13 +20,17 @@ var webs = await getCollection("webs");
     <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'></link>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">    <title>Astro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
   </head>
   <body class="bg-zinc-950 text-white font-base">
     <main class="min-w-[400px] w-3/5 lg:w-[900px] m-auto sticky">
       <nav class="text-xl w-[100%] flex flex-row-reverse p-[40px]">
-        <a href="#" class="px-[10px]">Contact</a>
-        <a href="#" class="px-[10px]">Portfolio</a>
+        <a href="#" class="px-[10px] hover:text-cyan-400">Contact
+          <div class="rounded-[4px] w-[1px] m-auto"></div>
+        </a>
+        <a href="#" class="px-[10px] hover:text-cyan-400">Portfolio
+          <div class="rounded-[4px] w-[1px] m-auto current"></div>
+        </a>
       </nav>
       <section class="min-w-[300px] p-[48px]">
         <header class="text-5xl font-title py-[20px] uppercase">{aboutMe.frontmatter.introduction}</header>
@@ -46,7 +50,7 @@ var webs = await getCollection("webs");
             <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
               <header class="entrytitle text-xl pb-[12px]">
                 <span>{game.data.gametitle}</span>
-                <span> {'('}{game.data.order}{')'}</span>
+                <span class="text-base"> {'('}{game.data.order}{')'}</span>
               </header>
               <figure class="h-[160px] items-center flex gap-[4px] bg-gray-900">
                 {game.data.images.map(image =>
@@ -82,8 +86,9 @@ var webs = await getCollection("webs");
             const { Content } = await render(web);
             return (
               <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
-                <header class="text-xl">
-                  {web.data.title}
+                <header class="entrytitle text-xl pb-[12px]">
+                  <span>{web.data.title}</span>
+                  <span class="text-base"> {'('}{web.data.order}{')'}</span>
                 </header>
                 <div class="text-sm py-[10px]">
                   {web.data.keywords.map(keyword =>
@@ -108,8 +113,9 @@ var webs = await getCollection("webs");
             const { Content } = await render(web);
             return (
               <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
-                <header class="text-xl">
-                  {web.data.title}
+                <header class="entrytitle text-xl pb-[12px]">
+                  <span>{web.data.title}</span>
+                  <span class="text-base"> {'('}{web.data.order}{')'}</span>
                 </header>
                 <div class="text-sm py-[10px]">
                   {web.data.keywords.map(keyword =>
@@ -123,6 +129,9 @@ var webs = await getCollection("webs");
             )}
           )}
         </article>
+      </section>
+      <section class="px-[20px] py-[60px]">
+        Made with Astro and Tailwind.
       </section>
     </main>
   </body>
