@@ -129,7 +129,7 @@ webs = webs.sort((a, b) => b.data.order - a.data.order);
                 <figure class="h-[160px] items-center flex gap-[4px] bg-gray-900">
                   {personal.data.images.map(image =>
                     <div class="grow-1">
-                      <Picture
+                      <Image
                         src={image}
                         formats={['webp']}
                         alt={personal.data.title}
@@ -150,8 +150,8 @@ webs = webs.sort((a, b) => b.data.order - a.data.order);
           )}
         </article>
       </section>
-      <section class="px-[20px] py-[60px]">
-        Designed with Figma, then coded in VSCode. built with Astro and Tailwind.
+      <section class="px-[20px] py-[60px] text-zinc-300">
+        Designed with Figma. built with Astro and Tailwind.
       </section>
     </main>
   </body>
