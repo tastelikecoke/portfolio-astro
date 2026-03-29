@@ -21,7 +21,17 @@ const webs = defineCollection({
     images: z.array(image()).optional(),
   }),
 });
+const personals = defineCollection({
+  loader: glob({base: './src/contents/personalgames' , pattern: '**/*.md', }),
+  schema: ({image}) => z.object({
+    title: z.string(),
+    gametitle: z.string(),
+    order: z.number(),
+    links: z.record(z.string().url()),
+    images: z.array(image()),
+  }),
+});
 
 // Expose your defined collection to Astro
 // with the `collections` export
-export const collections = { games, webs };
+export const collections = { games, webs, personals };

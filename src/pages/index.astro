@@ -8,6 +8,7 @@ import { Image, Picture } from 'astro:assets';
 var games = await getCollection("games");
 games = games.sort((a, b) => b.data.order - a.data.order);
 var webs = await getCollection("webs");
+var personals = await getCollection("personals");
 ---
 
 <html lang="en">
@@ -16,32 +17,35 @@ var webs = await getCollection("webs");
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-		<title>Portfolio</title>
-    <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'></link>
+    <title>Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
   </head>
   <body class="bg-zinc-950 text-white font-base">
     <main class="min-w-[400px] w-3/5 lg:w-[900px] m-auto sticky">
       <nav class="text-xl w-[100%] flex flex-row-reverse p-[40px]">
-        <a href="#" class="px-[10px] hover:text-cyan-400">Contact
+        <a href="#" class="px-[10px] hover:text-cyan-400">
+          Contact
           <div class="rounded-[4px] w-[1px] m-auto"></div>
         </a>
-        <a href="#" class="px-[10px] hover:text-cyan-400">Portfolio
+        <a href="#" class="px-[10px] hover:text-cyan-400">
+          Portfolio
           <div class="rounded-[4px] w-[1px] m-auto current"></div>
         </a>
       </nav>
       <section class="min-w-[300px] p-[48px]">
-        <header class="text-5xl font-title py-[20px] uppercase">{aboutMe.frontmatter.introduction}</header>
-        <article class="text-2xl">
+        <header class="text-5xl font-title py-[20px] font-medium uppercase">
+          {aboutMe.frontmatter.introduction}
+        </header>
+        <article class="text-2xl text-zinc-300 font-light">
           <aboutMe.Content />
         </article>
       </section>
       <section class="">
         <header class="text-3xl px-[20px] flex">
           <span>Professional Game Projects</span>
-          <hr class="inline flex-grow my-[20px] mx-[20px]" />
+          <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
         </header>
         <article class="grid grid-cols-1 lg:grid-cols-2">
           {games.map(async(game) => {
@@ -63,9 +67,9 @@ var webs = await getCollection("webs");
                   </div>
                 )}
               </figure>
-              <p class="text-sm py-[20px] text-zinc-400">
+              <div class="text-sm py-[20px] text-zinc-300 font-light">
                 <Content />
-              </p>
+              </div>
               <footer class="pt-[24px] text-sm">
                 {Object.entries(game.data.links).map(entry =>
                   <a class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
@@ -79,7 +83,7 @@ var webs = await getCollection("webs");
       <section class="pt-[48px]">
         <header class="text-3xl px-[20px] flex">
           <span>Web Development</span>
-          <hr class="inline flex-grow my-[20px] mx-[20px]" />
+          <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
         </header>
         <article class="grid grid-cols-1 lg:grid-cols-2">
           {webs.map(async(web) => {
@@ -95,9 +99,9 @@ var webs = await getCollection("webs");
                     <span class="bg-zinc-800 text-zinc-400 p-[8px] rounded-[5px] mx-[4px]">{keyword}</span>
                   )}
                 </div>
-                <p class="entry-content text-sm py-[20px] text-zinc-400">
-                  <Content />
-                </p>
+              <div class="text-sm py-[20px] text-zinc-300 font-light">
+                <Content />
+              </div>
               </div>
             )}
           )}
@@ -106,32 +110,43 @@ var webs = await getCollection("webs");
       <section class="pt-[48px]">
         <header class="text-3xl px-[20px] flex">
           <span>Personal Projects</span>
-          <hr class="inline flex-grow my-[20px] mx-[20px]" />
+          <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
         </header>
         <article class="grid grid-cols-1 lg:grid-cols-2">
-          {webs.map(async(web) => {
-            const { Content } = await render(web);
+          {personals.map(async(personal) => {
+            const { Content } = await render(personal);
             return (
               <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
                 <header class="entrytitle text-xl pb-[12px]">
-                  <span>{web.data.title}</span>
-                  <span class="text-base"> {'('}{web.data.order}{')'}</span>
+                  <span>{personal.data.gametitle}</span>
+                  <span class="text-base"> {'('}{personal.data.order}{')'}</span>
                 </header>
-                <div class="text-sm py-[10px]">
-                  {web.data.keywords.map(keyword =>
-                    <span class="bg-zinc-800 text-zinc-400 p-[8px] rounded-[5px] mx-[4px]">{keyword}</span>
+                <figure class="h-[160px] items-center flex gap-[4px] bg-gray-900">
+                  {personal.data.images.map(image =>
+                    <div class="grow-1">
+                      <Picture
+                        src={image}
+                        formats={['webp']}
+                        alt={personal.data.title}
+                        class="w-[100%] max-h-[160px] object-cover" />
+                    </div>
                   )}
-                </div>
+                </figure>
                 <p class="entry-content text-sm py-[20px] text-zinc-400">
                   <Content />
                 </p>
+                <footer class="pt-[24px] text-sm">
+                  {Object.entries(personal.data.links).map(entry =>
+                    <a class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
+                  )}
+                </footer>
               </div>
             )}
           )}
         </article>
       </section>
       <section class="px-[20px] py-[60px]">
-        Made with Astro and Tailwind.
+        Designed with Figma, then coded in VSCode. built with Astro and Tailwind.
       </section>
     </main>
   </body>

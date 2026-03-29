@@ -2,13 +2,15 @@
 
 @theme {
   --font-title: "Source Serif 4", serif;
-  --font-base: sans-serif;
+  --font-base: "Inter", sans-serif;
+}
+
+.optical-sizing-none {
+  font-optical-sizing: none;
 }
 
 .entry:hover .entrytitle {
   color: var(--color-cyan-400);
-  font-weight: bold;
-  transform:translateX(-3px);
 }
 .entry:hover article {
   color: white;
