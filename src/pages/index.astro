@@ -43,19 +43,23 @@ games = games.sort((a, b) => b.data.order - a.data.order);
             return (
             <div class="game p-[30px] hover:bg-zinc-900 mx-[20px]">
               <header class="gametitle text-xl">{game.data.gametitle}</header>
-              <div class="h-[160px] flex gap-[4px]">
+              <div class="h-[160px] items-center flex gap-[4px] bg-gray-900">
                 {game.data.images.map(image =>
-                  <div class="w-[50%]">
-                    <Picture src={image} formats={['webp']} alt={game.data.title} class="w-[100%] max-h-[160px] object-cover" />
+                  <div class="grow-1">
+                    <Picture
+                      src={image}
+                      formats={['webp']}
+                      alt={game.data.title}
+                      class="w-[100%] max-h-[160px] object-cover" />
                   </div>
                 )}
               </div>
               <article class="game-content text-sm py-[20px] text-zinc-400">
                 <Content />
               </article>
-              <footer class="pt-[24px]">
+              <footer class="pt-[24px] text-sm">
                 {Object.entries(game.data.links).map(entry =>
-                  <a class="inline-block m-[5px] p-[15px] bg-gray-800" href={entry[1]}>{entry[0]}</a>
+                  <a class="gamelinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
                 )}
               </footer>
             </div>

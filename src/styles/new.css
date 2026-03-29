@@ -6,6 +6,12 @@
 }
 
 .game:hover .gametitle {
-  color: oklch(78.9% 0.154 211.53);
+  color: var(--color-cyan-400);
   font-weight: bold;
+}
+.game:hover article {
+  color: white;
+}
+.game:hover .gamelinks {
+  background-color: var(--color-gray-700);
 }
