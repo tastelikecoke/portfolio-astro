@@ -32,18 +32,32 @@ nav a:hover div{
   border: 2px solid var(--color-cyan-400);
 }
 
-button.gallery-clicked {
+button.gallery-clicked .popout{
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0px;
   left: 0px;
   background-color: rgba(0,0,0,0.7);
+  z-index: 10;
 }
 button.gallery img:hover {
   filter: brightness(1.4);
 }
-button.gallery-clicked img {
+button.gallery .hide-first {
+  display: none;
+}
+button.gallery img:hover {
+  filter: brightness(1.4);
+}
+button.gallery-clicked .hide-first {
+  margin: auto;
+  width: 90%;
+  height: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+button.gallery-clicked popout {
   margin: auto;
   width: 90%;
   height: 90%;
