@@ -40,6 +40,7 @@ button.gallery-clicked .popout{
   left: 0px;
   background-color: rgba(0,0,0,0.7);
   z-index: 10;
+  padding: 100px 0px;
 }
 button.gallery img:hover {
   filter: brightness(1.4);
@@ -51,13 +52,6 @@ button.gallery img:hover {
   filter: brightness(1.4);
 }
 button.gallery-clicked .hide-first {
-  margin: auto;
-  width: 90%;
-  height: 90%;
-  max-height: 90%;
-  object-fit: contain;
-}
-button.gallery-clicked popout {
   margin: auto;
   width: 90%;
   height: 90%;
