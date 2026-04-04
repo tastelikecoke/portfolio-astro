@@ -41,7 +41,7 @@ button.gallery-clicked {
   background-color: rgba(0,0,0,0.7);
 }
 button.gallery img:hover {
-  filter: brightness(1.2);
+  filter: brightness(1.4);
 }
 button.gallery-clicked img {
   margin: auto;

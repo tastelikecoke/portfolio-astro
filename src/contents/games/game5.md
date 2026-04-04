@@ -1,15 +1,15 @@
 ---
 title: ''
 publisher: 'Dusk Wave Arts'
-gametitle: 'Stuck in the Present'
-order: 2025
+gametitle: 'Barheim'
+order: 2024
 links: {
-  'Details': 'https://store.steampowered.com/app/2980980/Stuck_in_the_Present/',
+  'Details': 'https://store.steampowered.com/app/2980970/BARHEIM/',
   'Trailer': 'https://www.youtube.com/watch?v=iTIqQEI0Pgc'
 }
 images: [
-  '../../img/sitp.jpg',
-  '../../img/sitp2.jpg'
+  '../../img/barheim1.jpg',
+  '../../img/barheim2.jpg'
 ]
 ---
-I worked as a Senior Game Developer for Stuck in the Present, 3D side-scrolling psychological horror game where two friends navigate through twisting subway stations of an unfamiliar city.
+I worked as a Senior Game Developer for Barheim: a single-player, 3D Time Management Tower Defense game.

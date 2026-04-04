@@ -10,6 +10,7 @@ games = games.sort((a, b) => b.data.order - a.data.order);
 var webs = await getCollection("webs");
 var personals = await getCollection("personals");
 webs = webs.sort((a, b) => b.data.order - a.data.order);
+personals = personals.sort((a, b) => b.data.order - a.data.order);
 
 function expand() {
   alert("expand");
@@ -52,7 +53,7 @@ function expand() {
         </article>
       </section>
       <section class="">
-        <header class="text-3xl px-[20px] flex">
+        <header class="text-3xl px-[20px] flex py-[10px] backdrop-blur sticky top-0 bg-zinc-950/75">
           <span>Professional Game Projects</span>
           <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
         </header>
@@ -81,7 +82,7 @@ function expand() {
               </div>
               <footer class="pt-[24px] text-sm">
                 {Object.entries(game.data.links).map(entry =>
-                  <a class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
+                  <a target="_blank" class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
                 )}
               </footer>
             </div>
@@ -90,7 +91,7 @@ function expand() {
         </article>
       </section>
       <section class="pt-[48px]">
-        <header class="text-3xl px-[20px] flex">
+        <header class="text-3xl px-[20px] flex py-[10px] backdrop-blur sticky top-0 bg-zinc-950/75">
           <span>Web Development</span>
           <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
         </header>
@@ -117,7 +118,7 @@ function expand() {
         </article>
       </section>
       <section class="pt-[48px]">
-        <header class="text-3xl px-[20px] flex">
+        <header class="text-3xl px-[20px] flex py-[10px] backdrop-blur sticky top-0 bg-zinc-950/75">
           <span>Personal Projects</span>
           <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
         </header>
@@ -145,7 +146,7 @@ function expand() {
                 </div>
                 <footer class="pt-[24px] text-sm">
                   {Object.entries(personal.data.links).map(entry =>
-                    <a class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
+                    <a target="_blank" class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
                   )}
                 </footer>
               </div>
@@ -154,7 +155,7 @@ function expand() {
         </article>
       </section>
       <section class="px-[20px] py-[60px] text-zinc-300">
-        Designed with Figma. built with Astro and Tailwind.
+        Designed with Figma. Custom-built with Astro and Tailwind. <a target="_blank" class="hover:underline" href="https://github.com/tastelikecoke/portfolio-astro">Source here.</a>
       </section>
     </main>
   </body>

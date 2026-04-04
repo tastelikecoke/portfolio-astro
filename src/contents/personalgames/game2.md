@@ -1,14 +1,14 @@
 ---
-title: 'Aberrant Archive'
-order: 2024
-gametitle: 'Aberrant Archive'
+title: 'Dragoon Drop'
+order: 2025
+gametitle: 'Dragoon Drop'
 links: {
-  'Play Now': 'https://tastelikecoke.itch.io/aberrant-archive',
-  'Source': 'https://github.com/tastelikecoke/aberrant-archive'
+  'Play Now': 'https://tastelikecoke.itch.io/dragoondrop2',
+  'Source': 'https://github.com/tastelikecoke/suika-dragoon'
 }
 images: [
-  '../../img/TitlescreenCTASmall.png',
-  '../../img/Aberrant.gif'
+  '../../img/DragoonDrop.png',
+  '../../img/dragoongif.gif'
 ]
 ---
-"A brand new open world mobile strategic social game. play for free now!" This is an Acerola game jam #0 entry that is also demo reel for my experience in 3D mobile game development. My specialty is in the management of user interfaces. 
+A dragoon combination game based on Dokibird's beloved fans named dragoons. This is a personal project along with other fans as a way of support for Dokibird's vtuber community. The whole codebase is public at github. 

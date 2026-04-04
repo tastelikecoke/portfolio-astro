@@ -3,8 +3,9 @@ title: 'Altitude Games: Dream Defense'
 gametitle: 'Dream Defense'
 order: 2016
 links: {
-    'Details': 'https://www.kongregate.com/pages/play-dragon-idle-adventure',
-    'Gameplay': 'https://www.youtube.com/watch?v=LUnb8j_v31I'
+    'Details': 'https://altitude-games.com/mobile-games/dream-defense/',
+    'Google Play': 'https://play.google.com/store/apps/details?id=com.altitude.dreamdefense',
+    'Apple App Store': 'https://apps.apple.com/us/app/dream-defense/id1078573759'
 }
 images: [
   '../../img/dreamdefense.png',

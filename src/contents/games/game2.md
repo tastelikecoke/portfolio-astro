@@ -3,7 +3,7 @@ title: 'Altitude Games: Holy Ship'
 gametitle: 'Holy Ship'
 order: 2018
 links: {
-    'IMGA Award Details': 'https://www.imgawards.com/games/holy-ship/',
+    'Details': 'https://www.facebook.com/altitudegames/photos/were-super-excited-to-announce-that-altitudes-newest-game-holy-ship-is-now-avail/1597169343660272/',
     'Gameplay': 'https://www.youtube.com/watch?v=uc2-rlK1LAo'
 }
 images: [

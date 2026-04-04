@@ -7,7 +7,7 @@ links: {
   'Details': 'https://pikpok.com/games/kung-fu-clicker/',
   'Press Release': 'https://pikpok.com/news/kung-fu-clicker-now-available-app-store-google-play/',
   'Gameplay': 'https://www.youtube.com/watch?v=fTQqAmC5iqI',
-  'Get on Apple App Store': 'https://apps.apple.com/ph/app/id1401010115?ign-mpt=uo%3D4&pt=169619'
+  'Apple App Store': 'https://apps.apple.com/ph/app/id1401010115?ign-mpt=uo%3D4&pt=169619'
 }
 images: [
   '../../img/kfc.jpg',
