@@ -4,12 +4,12 @@ publisher: 'Dusk Wave Arts'
 gametitle: 'Stuck in the Present'
 order: 2025
 links: {
-  'Details': 'https://www.kongregate.com/pages/play-dragon-idle-adventure',
-  'Gameplay': 'https://www.youtube.com/watch?v=LUnb8j_v31I'
+  'Details': 'https://store.steampowered.com/app/2980980/Stuck_in_the_Present/',
+  'Trailer': 'https://www.youtube.com/watch?v=iTIqQEI0Pgc'
 }
 images: [
-  '../../img/dia1.jpg',
-  '../../img/dia2.jpg'
+  '../../img/sitp.jpg',
+  '../../img/sitp2.jpg'
 ]
 ---
-I was a Game Engineer for Stuck in the Present, a Unity Engine-based adventure game released on Steam in October 2025.
+I worked as a Senior Game Developer for Stuck in the Present, 3D side-scrolling psychological horror game where two friends navigate through twisting subway stations of an unfamiliar city.
