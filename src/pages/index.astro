@@ -31,6 +31,7 @@ function expand() {
   <body class="bg-zinc-950 text-white font-base">
     <main class="min-w-[400px] w-3/5 lg:w-5/6 lg:max-w-[1080px] m-auto sticky">
       <nav class="text-xl w-[100%] flex flex-row-reverse p-[40px]">
+        <!--
         <a href="#" class="px-[10px] hover:text-cyan-400">
           Contact
           <div class="rounded-[4px] w-[1px] m-auto"></div>
@@ -39,6 +40,7 @@ function expand() {
           Skills
           <div class="rounded-[4px] w-[1px] m-auto"></div>
         </a>
+         -->
         <a href="#" class="px-[10px] hover:text-cyan-400">
           Portfolio
           <div class="rounded-[4px] w-[1px] m-auto current"></div>
@@ -99,33 +101,6 @@ function expand() {
       </section>
       <section class="pt-[48px]">
         <header class="text-3xl px-[20px] flex py-[10px] backdrop-blur sticky top-0 bg-zinc-950/75">
-          <span>Web Development</span>
-          <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
-        </header>
-        <article class="grid grid-cols-1 lg:grid-cols-2">
-          {webs.map(async(web) => {
-            const { Content } = await render(web);
-            return (
-              <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
-                <header class="entrytitle text-xl pb-[12px]">
-                  <span>{web.data.title}</span>
-                  <span class="text-base"> {'('}{web.data.order}{')'}</span>
-                </header>
-                <div class="text-sm py-[10px]">
-                  {web.data.keywords.map(keyword =>
-                    <span class="bg-zinc-800 text-zinc-400 p-[8px] rounded-[5px] mx-[4px]">{keyword}</span>
-                  )}
-                </div>
-              <div class="text-sm py-[20px] text-zinc-300 font-light">
-                <Content />
-              </div>
-              </div>
-            )}
-          )}
-        </article>
-      </section>
-      <section class="pt-[48px]">
-        <header class="text-3xl px-[20px] flex py-[10px] backdrop-blur sticky top-0 bg-zinc-950/75">
           <span>Personal Projects</span>
           <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
         </header>
@@ -162,6 +137,33 @@ function expand() {
                     <a target="_blank" class="entrylinks inline-block hover:bg-cyan-900! hover:text-cyan-400 m-[5px] p-[15px] bg-gray-900" href={entry[1]}>{entry[0]}</a>
                   )}
                 </footer>
+              </div>
+            )}
+          )}
+        </article>
+      </section>
+      <section class="pt-[48px]">
+        <header class="text-3xl px-[20px] flex py-[10px] backdrop-blur sticky top-0 bg-zinc-950/75">
+          <span>Web Development</span>
+          <hr class="inline flex-grow my-[20px] mx-[20px] border-zinc-400" />
+        </header>
+        <article class="grid grid-cols-1 lg:grid-cols-2">
+          {webs.map(async(web) => {
+            const { Content } = await render(web);
+            return (
+              <div class="entry p-[30px] hover:bg-zinc-900 mx-[20px]">
+                <header class="entrytitle text-xl pb-[12px]">
+                  <span>{web.data.title}</span>
+                  <span class="text-base"> {'('}{web.data.order}{')'}</span>
+                </header>
+                <div class="text-sm py-[10px]">
+                  {web.data.keywords.map(keyword =>
+                    <span class="bg-zinc-800 text-zinc-400 p-[8px] rounded-[5px] mx-[4px]">{keyword}</span>
+                  )}
+                </div>
+              <div class="text-sm py-[20px] text-zinc-300 font-light">
+                <Content />
+              </div>
               </div>
             )}
           )}
